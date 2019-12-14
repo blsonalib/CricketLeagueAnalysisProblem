@@ -1,9 +1,9 @@
 package cricketanalyser;
 import com.opencsv.bean.CsvBindByName;
 
-public class IPLCSV {
+public class IPLCsv {
 
-    public IPLCSV() {
+    public IPLCsv() {
     }
     @CsvBindByName(column = "POS")
     public String position;
@@ -49,7 +49,7 @@ public class IPLCSV {
 
     @Override
     public String toString() {
-        return "IPLCSV{" +
+        return "IPLCsv{" +
                 "position='" + position + '\'' +
                 ", player='" + player + '\'' +
                 ", match=" + match +
