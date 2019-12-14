@@ -25,6 +25,8 @@ public class CricketAnalyser {
         } catch (IOException e) {
             throw new CricketAnalyserException(e.getMessage(),
                     CricketAnalyserException.ExceptionType.DATA_NOT_FOUND);
+        }catch (RuntimeException e){
+            throw new CricketAnalyserException(e.getMessage(),CricketAnalyserException.ExceptionType.FILE_ISSUE);
         }
     }
 }

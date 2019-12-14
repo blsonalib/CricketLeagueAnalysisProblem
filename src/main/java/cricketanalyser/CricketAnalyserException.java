@@ -3,9 +3,10 @@ package cricketanalyser;
 public class CricketAnalyserException extends Exception{
     enum ExceptionType
     {
-        ENTERED_NULL,DATA_NOT_FOUND;
+        DATA_NOT_FOUND,FILE_ISSUE;
     }
     ExceptionType type;
+
     public CricketAnalyserException(String message, String name) {
         super(message);
         this.type = ExceptionType.valueOf(name);
