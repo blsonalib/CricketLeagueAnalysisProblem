@@ -15,7 +15,7 @@ public class CricketAnalyserTest {
     }
 
     @Test
-    public void givenIndiaCensusData_WithWrongFile_ShouldThrowException() {
+    public void givenIPLFactSheetData_WithWrongDelimeter_ShouldThrowException() {
         try {
             CricketAnalyser cricketAnalyser=new CricketAnalyser();
             ExpectedException exceptionRule = ExpectedException.none();
