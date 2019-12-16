@@ -58,9 +58,18 @@ public class CricketAnalyserTest {
     @Test
     public void givenIPLFactSheetData_WhenSortedOnTopBattingAverages_ShouldReturnSortedResult() throws CricketAnalyserException {
         CricketAnalyser cricketAnalyser = new CricketAnalyser();
-        cricketAnalyser.loadCricketIPLData( CRICKET_CSV_FILE);
+        cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
         String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecords(SortedField.Field.AVERAGE);
         IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
         Assert.assertEquals("MS Dhoni", mostAverageRuns[0].player);
+    }
+
+    @Test
+    public void givenIPLFactSheetData_WhenSortedOnStrikingRates_ShouldReturnSortedResult() throws CricketAnalyserException {
+        CricketAnalyser cricketAnalyser = new CricketAnalyser();
+        cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
+        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecords(SortedField.Field.STRIKE_RATE);
+        IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
+        Assert.assertEquals("Ishant Sharma", mostAverageRuns[0].player);
     }
 }
