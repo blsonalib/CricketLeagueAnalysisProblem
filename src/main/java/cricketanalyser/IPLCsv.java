@@ -6,7 +6,7 @@ public class IPLCsv {
     public IPLCsv() {
     }
     @CsvBindByName(column = "POS")
-    public String position;
+    public int position;
 
     @CsvBindByName(column = "PLAYER", required = true)
     public String player;

@@ -5,10 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SortedField {
+
     static Map<Field, Comparator> sortFieldComparator = new HashMap<>();
 
     enum Field {
-        AVERAGE, STRIKE_RATE, CENTURY, FOURS, HALF_CENTURY, HIGH_SCORE, SIX, RUN, PLAYERS,POSITION;
+        AVERAGE, STRIKE_RATE, CENTURY, FOURS, HALF_CENTURY, HIGH_SCORE, SIX, RUN, PLAYERS,POSITION,SIX_AND_FOURS;
     }
 
     SortedField() {
@@ -19,7 +20,7 @@ public class SortedField {
 
         Comparator<IPLCsv> iplPositionComparator = Comparator.comparing(census -> census.position);
         Comparator<IPLCsv> iplPlayerComparator = Comparator.comparing(census -> census.player);
-        Comparator<IPLCsv> iplAverageComparator = Comparator.comparing(census->census.average,Comparator.reverseOrder());
+        Comparator<IPLCsv> iplAverageComparator = Comparator.comparing(census->census.average);
         Comparator<IPLCsv> iplCenturyComparator = Comparator.comparing(census -> census.hundreds);
         Comparator<IPLCsv> iplFoursComparator = Comparator.comparing(census -> census.fours);
         Comparator<IPLCsv> iplHalfCenturyComparator = Comparator.comparing(census -> census.fiftys);
@@ -39,6 +40,7 @@ public class SortedField {
         sortFieldComparator.put(Field.RUN, iplRunComparator);
         sortFieldComparator.put(Field.HIGH_SCORE, iplHighScoreComparator);
         sortFieldComparator.put(Field.SIX, iplSixComparator);
+        sortFieldComparator.put(Field.SIX_AND_FOURS, new SortedFieldComparator());
 
         Comparator<IPLCsv> daoComparator = sortFieldComparator.get(field);
         return daoComparator;

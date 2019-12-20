@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class CricketAnalyser {
+
     List<IPLCsv> iplCsvsList = new ArrayList<>();
 
     public int loadCricketIPLData(String csvFilePath) throws CricketAnalyserException {
