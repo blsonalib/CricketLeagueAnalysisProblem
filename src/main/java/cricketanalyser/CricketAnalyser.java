@@ -32,13 +32,15 @@ public class CricketAnalyser {
         return 0;
     }
 
-    public String getSortIPLCricketRecords(SortedField.Field field) throws CricketAnalyserException {
+    public String getSortIPLCricketRecord(SortedField.Field field) throws CricketAnalyserException {
         if (iplCsvsList == null || iplCsvsList.size() == 0) {
             throw new CricketAnalyserException("No Census Data", CricketAnalyserException.ExceptionType.DATA_NOT_FOUND);
         }
+
         Comparator<IPLCsv> censusComparator = SortedField.getComparatorField(field);
         iplCsvsList.sort(censusComparator);
         iplCsvsList.forEach(System.out::println);
         return new Gson().toJson(iplCsvsList);
     }
+
 }

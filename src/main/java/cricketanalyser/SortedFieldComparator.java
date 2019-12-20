@@ -9,3 +9,4 @@ public class SortedFieldComparator implements Comparator<IPLCsv> {
         return (((iplCsv1.sixes * 6) + (iplCsv1.fours * 4)) - ((iplCsv2.sixes * 6) + (iplCsv2.fours * 4)));
     }
 }
+

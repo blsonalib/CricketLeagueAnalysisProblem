@@ -9,7 +9,7 @@ public class SortedField {
     static Map<Field, Comparator> sortFieldComparator = new HashMap<>();
 
     enum Field {
-        AVERAGE, STRIKE_RATE, CENTURY, FOURS, HALF_CENTURY, HIGH_SCORE, SIX, RUN, PLAYERS,POSITION,SIX_AND_FOURS;
+        AVERAGE, STRIKE_RATE, CENTURY, FOURS, HALF_CENTURY, HIGH_SCORE, SIX, RUN, PLAYERS,POSITION,SIX_AND_FOURS,SIX_AND_FOURS_WITH_STRIKE_RATE;
     }
 
     SortedField() {
@@ -41,10 +41,10 @@ public class SortedField {
         sortFieldComparator.put(Field.HIGH_SCORE, iplHighScoreComparator);
         sortFieldComparator.put(Field.SIX, iplSixComparator);
         sortFieldComparator.put(Field.SIX_AND_FOURS, new SortedFieldComparator());
+        sortFieldComparator.put(Field.SIX_AND_FOURS_WITH_STRIKE_RATE, new SortedFieldComparator().thenComparing(iplStrikeRateComparator));
 
         Comparator<IPLCsv> daoComparator = sortFieldComparator.get(field);
         return daoComparator;
 
     }
-
 }
