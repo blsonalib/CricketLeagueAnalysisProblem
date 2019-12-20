@@ -83,12 +83,12 @@ public class CricketAnalyserTest {
     }
 
     @Test
-    public void givenIPLFactSheetData_WhenSortedOnStrickingRateAnd4sAnd6s_ShouldReturnBestStrikinRateOf4sAnd6s() throws CricketAnalyserException {
+    public void givenIPLFactSheetData_WhenSortedOnStrickingRateAnd4sAnd6s_ShouldReturnBestStrikinRateWith4sAnd6s() throws CricketAnalyserException {
         CricketAnalyser cricketAnalyser = new CricketAnalyser();
         cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
-        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.SIX_AND_FOURS_WITH_STRIKE_RATE);
+        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.AVERAGE_WITH_BEST_STRIKE_RATE);
         IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
-        Assert.assertEquals("Andre Russell", mostAverageRuns[mostAverageRuns.length-1].player);
+        Assert.assertEquals("MS Dhoni", mostAverageRuns[mostAverageRuns.length-1].player);
     }
 }
 
