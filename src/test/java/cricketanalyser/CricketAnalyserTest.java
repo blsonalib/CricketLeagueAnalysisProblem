@@ -61,7 +61,7 @@ public class CricketAnalyserTest {
         cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
         String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecords(SortedField.Field.AVERAGE);
         IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
-        Assert.assertEquals("MS Dhoni", mostAverageRuns[0].player);
+        Assert.assertEquals("MS Dhoni", mostAverageRuns[mostAverageRuns.length-1].player);
     }
 
     @Test
@@ -70,6 +70,17 @@ public class CricketAnalyserTest {
         cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
         String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecords(SortedField.Field.STRIKE_RATE);
         IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
-        Assert.assertEquals("Ishant Sharma", mostAverageRuns[0].player);
+        Assert.assertEquals("Ishant Sharma", mostAverageRuns[mostAverageRuns.length-1].player);
+    }
+
+    @Test
+    public void givenIPLFactSheetData_WhenSortedOn6sAnd4s_ShouldReturnMaximumHitsOf6sAnd4s() throws CricketAnalyserException {
+        CricketAnalyser cricketAnalyser = new CricketAnalyser();
+        cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
+        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecords(SortedField.Field.SIX_AND_FOURS);
+        IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
+        Assert.assertEquals("Andre Russell", mostAverageRuns[mostAverageRuns.length-1].player);
     }
 }
+
+
