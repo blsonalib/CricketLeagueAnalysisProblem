@@ -83,12 +83,21 @@ public class CricketAnalyserTest {
     }
 
     @Test
-    public void givenIPLFactSheetData_WhenSortedOnStrickingRateAnd4sAnd6s_ShouldReturnBestStrikinRateWith4sAnd6s() throws CricketAnalyserException {
+    public void givenIPLFactSheetData_WhenSortedOnGreatAveragesAndBestStrikingRate_ShouldReturnBestStrikinRateWithGreatAverages() throws CricketAnalyserException {
         CricketAnalyser cricketAnalyser = new CricketAnalyser();
         cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
         String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.AVERAGE_WITH_BEST_STRIKE_RATE);
         IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
         Assert.assertEquals("MS Dhoni", mostAverageRuns[mostAverageRuns.length-1].player);
+    }
+
+    @Test
+    public void givenIPLFactSheetData_WhenSortedMaximumRunsAndBestAverages_ShouldReturnMaximumRunsWithGreatAverages() throws CricketAnalyserException {
+        CricketAnalyser cricketAnalyser = new CricketAnalyser();
+        cricketAnalyser.loadCricketIPLData(CRICKET_CSV_FILE);
+        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.MAXIMUM_RUNS_WITH_BEST_AVERAGES);
+        IPLCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLCsv[].class);
+        Assert.assertEquals("David Warner", mostAverageRuns[mostAverageRuns.length-1].player);
     }
 }
 
