@@ -9,7 +9,9 @@ public class SortedField {
     static Map<Field, Comparator> sortFieldComparator = new HashMap<>();
 
     enum Field {
-        AVERAGE, STRIKE_RATE, CENTURY, FOURS, HALF_CENTURY, HIGH_SCORE, SIX, RUN, PLAYERS,POSITION,SIX_AND_FOURS,SIX_AND_FOURS_WITH_STRIKE_RATE;
+        AVERAGE, STRIKE_RATE, FOURS,SIX,RUN,PLAYERS,SIX_AND_FOURS,
+        SIX_AND_FOURS_WITH_STRIKE_RATE,AVERAGE_WITH_BEST_STRIKE_RATE,
+        MAXIMUM_RUNS_WITH_BEST_AVERAGES;
     }
 
     SortedField() {
@@ -18,32 +20,25 @@ public class SortedField {
 
     public static Comparator getComparatorField(SortedField.Field field) {
 
-        Comparator<IPLCsv> iplPositionComparator = Comparator.comparing(census -> census.position);
-        Comparator<IPLCsv> iplPlayerComparator = Comparator.comparing(census -> census.player);
-        Comparator<IPLCsv> iplAverageComparator = Comparator.comparing(census->census.average);
-        Comparator<IPLCsv> iplCenturyComparator = Comparator.comparing(census -> census.hundreds);
-        Comparator<IPLCsv> iplFoursComparator = Comparator.comparing(census -> census.fours);
-        Comparator<IPLCsv> iplHalfCenturyComparator = Comparator.comparing(census -> census.fiftys);
-        Comparator<IPLCsv> iplHighScoreComparator = Comparator.comparing(census -> census.highScore);
-        Comparator<IPLCsv> iplSixComparator = Comparator.comparing(census -> census.sixes);
-        Comparator<IPLCsv> iplRunComparator = Comparator.comparing(census -> census.runs);
-        Comparator<IPLCsv> iplStrikeRateComparator = Comparator.comparing(census -> census.strikeRate);
+        Comparator<IPLDAO> iplPlayerComparator = Comparator.comparing(census -> census.player);
+        Comparator<IPLDAO> iplAverageComparator = Comparator.comparing(census->census.average);
+        Comparator<IPLDAO> iplFoursComparator = Comparator.comparing(census -> census.fours);
+        Comparator<IPLDAO> iplSixComparator = Comparator.comparing(census -> census.sixes);
+        Comparator<IPLDAO> iplRunComparator = Comparator.comparing(census -> census.runs);
+        Comparator<IPLDAO> iplStrikeRateComparator = Comparator.comparing(census -> census.strikeRate);
 
-        sortFieldComparator.put(Field.POSITION, iplPositionComparator);
         sortFieldComparator.put(Field.PLAYERS, iplPlayerComparator);
         sortFieldComparator.put(Field.AVERAGE, iplAverageComparator);
         sortFieldComparator.put(Field.STRIKE_RATE, iplStrikeRateComparator);
-        sortFieldComparator.put(Field.CENTURY, iplCenturyComparator);
-        sortFieldComparator.put(Field.HALF_CENTURY, iplHalfCenturyComparator);
         sortFieldComparator.put(Field.FOURS, iplFoursComparator);
-        sortFieldComparator.put(Field.HIGH_SCORE, iplHighScoreComparator);
         sortFieldComparator.put(Field.RUN, iplRunComparator);
-        sortFieldComparator.put(Field.HIGH_SCORE, iplHighScoreComparator);
         sortFieldComparator.put(Field.SIX, iplSixComparator);
         sortFieldComparator.put(Field.SIX_AND_FOURS, new SortedFieldComparator());
         sortFieldComparator.put(Field.SIX_AND_FOURS_WITH_STRIKE_RATE, new SortedFieldComparator().thenComparing(iplStrikeRateComparator));
+        sortFieldComparator.put(Field.AVERAGE_WITH_BEST_STRIKE_RATE,(iplAverageComparator).thenComparing(iplStrikeRateComparator));
+        sortFieldComparator.put(Field.MAXIMUM_RUNS_WITH_BEST_AVERAGES,(iplRunComparator).thenComparing(iplAverageComparator));
 
-        Comparator<IPLCsv> daoComparator = sortFieldComparator.get(field);
+        Comparator<IPLRunsCsv> daoComparator = sortFieldComparator.get(field);
         return daoComparator;
 
     }

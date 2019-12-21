@@ -3,22 +3,12 @@ package cricketanalyser;
 public class CricketAnalyserException extends Exception{
     enum ExceptionType
     {
-        DATA_NOT_FOUND,FILE_ISSUE;
+        DATA_NOT_FOUND,FILE_ISSUE,INCORRECT_FILE;
     }
     ExceptionType type;
 
-    public CricketAnalyserException(String message, String name) {
-        super(message);
-        this.type = ExceptionType.valueOf(name);
-    }
-
     public CricketAnalyserException(String message, ExceptionType type) {
         super(message);
-        this.type = type;
-    }
-
-    public CricketAnalyserException(String message, ExceptionType type, Throwable cause) {
-        super(message,cause);
         this.type = type;
     }
 }
