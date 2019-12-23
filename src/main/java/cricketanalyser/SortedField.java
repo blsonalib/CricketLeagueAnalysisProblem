@@ -13,7 +13,7 @@ public class SortedField {
         SIX_AND_FOURS_WITH_STRIKE_RATE,AVERAGE_WITH_BEST_STRIKE_RATE,
         MAXIMUM_RUNS_WITH_BEST_AVERAGES,ECONOMY_RATE,FOUR_WICKET,FIVE_WICKET,
         BEST_STRIKING_RATE_WITH_4AND5WICKET,BEST_BALLINGRATE_WITH_STRIKERATE,
-        MAXIMUM_WICKET_WITH_BESTBALLINGRATE;
+        MAXIMUM_WICKET_WITH_BESTBALLINGRATE,BEST_AVERAGES_OF_BOTH;
     }
 
     SortedField() {
@@ -48,6 +48,7 @@ public class SortedField {
         sortFieldComparator.put(Field.MAXIMUM_RUNS_WITH_BEST_AVERAGES,(iplRunComparator).thenComparing(iplAverageComparator));
         sortFieldComparator.put(Field.BEST_BALLINGRATE_WITH_STRIKERATE,(iplAverageComparator).thenComparing(iplStrikeRateComparator));
         sortFieldComparator.put(Field.MAXIMUM_WICKET_WITH_BESTBALLINGRATE,new SortedFieldComparator().thenComparing(iplAverageComparator));
+        sortFieldComparator.put(Field.BEST_AVERAGES_OF_BOTH,(iplAverageComparator).thenComparing(iplAverageComparator));
 
         Comparator<IPLDAO> daoComparator = sortFieldComparator.get(field);
         return daoComparator;

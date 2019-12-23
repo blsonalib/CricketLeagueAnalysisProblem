@@ -9,10 +9,10 @@ public class IPLRunsCsv {
     public int position;
 
     @CsvBindByName(column = "PLAYER", required = true)
-    public String player;
+    public  String player;
 
     @CsvBindByName(column = "Mat", required = true)
-    public int match;
+    public int matches;
 
     @CsvBindByName(column = "Inns", required = true)
     public int innings;
@@ -47,10 +47,10 @@ public class IPLRunsCsv {
     @CsvBindByName(column = "6s", required = true)
     public int sixes;
 
-    public IPLRunsCsv(int position, String player, int match, int runs, double strikeRate, int sixes, double average, int fours) {
+    public IPLRunsCsv(int position, String player, int matches, int runs, double strikeRate, int sixes, double average, int fours) {
       this.position=position;
       this.player=player;
-      this.match=match;
+      this.matches=matches;
       this.runs=runs;
       this.strikeRate=strikeRate;
       this.sixes=sixes;
@@ -64,7 +64,7 @@ public class IPLRunsCsv {
         return "IPLCsv{" +
                 "position='" + position + '\'' +
                 ", player='" + player + '\'' +
-                ", match=" + match +
+                ", match=" + matches +
                 ", innings=" + innings +
                 ", notOut=" + notOut +
                 ", runs=" + runs +

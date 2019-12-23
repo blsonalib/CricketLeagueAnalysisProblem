@@ -17,7 +17,7 @@ public class IPLDAO {
     public IPLDAO(IPLRunsCsv iplRunsCsv) {
         position = iplRunsCsv.position;
         player = iplRunsCsv.player;
-        matches = iplRunsCsv.match;
+        matches = iplRunsCsv.matches;
         runs = iplRunsCsv.runs;
         strikeRate = iplRunsCsv.strikeRate;
         sixes = iplRunsCsv.sixes;
@@ -38,10 +38,9 @@ public class IPLDAO {
         fiveWicket = iplWicketCsv.fiveWicket;
     }
 
-    public Object getIPLDTO(CricketAnalyser.Cricket cricket) {
+    public IPLWicketCsv getIPLDTO(CricketAnalyser.Cricket cricket) {
         if (cricket.equals(CricketAnalyser.Cricket.RUNS))
-            return new IPLRunsCsv(position, player, matches, runs, strikeRate, sixes, average, fours);
-        return new IPLWicketCsv(position, player, runs, average, matches, strikeRate, economy,fourWkt,fiveWicket);
-
-    }
+        return new IPLWicketCsv(position, player, matches,average,runs, strikeRate, sixes, fours);
+            return new IPLWicketCsv(position, player, runs, average, matches, strikeRate, economy, fourWkt, fiveWicket);
+        }
 }
