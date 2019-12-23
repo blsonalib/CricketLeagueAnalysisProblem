@@ -14,9 +14,9 @@ import java.util.stream.StreamSupport;
 
 public class IPLWicketAdapter extends CricketAdapter {
     @Override
-    public Map<String, IPLDAO> loadIPLCensusData(String... csvfilePath) throws CricketAnalyserException {
-        Map<String,IPLDAO> ipldaoMap = super.loadIPLCensusData(IPLWicketCsv.class, csvfilePath[0]);
-        this.loadRunData(ipldaoMap, csvfilePath);
+    public Map<String, IPLDAO> loadIPLCensusData(String... csvPath) throws CricketAnalyserException {
+        Map<String,IPLDAO> ipldaoMap = super.loadIPLCensusData(IPLWicketCsv.class, csvPath[0]);
+        this.loadRunData(ipldaoMap, csvPath);
         return ipldaoMap;
     }
 
@@ -28,7 +28,7 @@ public class IPLWicketAdapter extends CricketAdapter {
             Iterable<IPLRunsCsv> csvIterable = () -> runCsvIterator;
             StreamSupport.stream(csvIterable.spliterator(), false).
                     filter(csvRun ->ipldaoMap.get(csvRun.player) != null).
-                    forEach(csvRun -> ipldaoMap.get(csvRun.player).player = csvRun.player);
+                    forEach(csvRun -> ipldaoMap.get(csvRun.player).bowlingAverage = csvRun.average);
         } catch (IOException e) {
             throw new CricketAnalyserException(e.getMessage(),
                     CricketAnalyserException.ExceptionType.DATA_NOT_FOUND);

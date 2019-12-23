@@ -58,19 +58,6 @@ public class IPLWicketCsv {
         this.fiveWicket = fiveWicket;
     }
 
-    public IPLWicketCsv(int position, String player, int matches, double average, int runs, double strikeRate, int sixes, int fours) {
-        this.position = position;
-        this.player = player;
-        this.matches = matches;
-        this.runs = runs;
-        this.average = average;
-        this.matches = matches;
-        this.strikeRate = strikeRate;
-        this.economy = economy;
-        this.fourWkt = fourWkt;
-        this.fiveWicket = fiveWicket;
-    }
-
 
     @Override
     public String toString() {
