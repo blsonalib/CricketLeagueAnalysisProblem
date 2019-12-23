@@ -109,6 +109,15 @@ public class CricketAnalyserTest {
         IPLWicketCsv[] mostAverageWicket = new Gson().fromJson(iplPlayersRecords, IPLWicketCsv[].class);
         Assert.assertEquals("Anukul Roy", mostAverageWicket[0].player);
     }
+
+    @Test
+    public void givenIPLFactSheetData_WhenSortedStrikingRateOfBaller_ShouldReturnBestStrikingRate() throws CricketAnalyserException {
+        CricketAnalyser cricketAnalyser = new CricketAnalyser(CricketAnalyser.Cricket.WICKET);
+        cricketAnalyser.loadIPLCensusData(CricketAnalyser.Cricket.WICKET,CRICKET_WICKETS_CSV_FILE);
+        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.STRIKE_RATE);
+        IPLWicketCsv[] mostAverageWicket = new Gson().fromJson(iplPlayersRecords, IPLWicketCsv[].class);
+        Assert.assertEquals("Lockie Ferguson", mostAverageWicket[mostAverageWicket.length-1].player);
+    }
 }
 
 
