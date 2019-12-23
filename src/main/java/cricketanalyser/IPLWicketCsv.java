@@ -34,7 +34,7 @@ public class IPLWicketCsv {
     public double average;
 
     @CsvBindByName(column = "Econ")
-    public int economy;
+    public double economy;
 
     @CsvBindByName(column = "SR")
     public double strikeRate;
@@ -45,7 +45,17 @@ public class IPLWicketCsv {
     @CsvBindByName(column = "5w")
     public int fiveWicket;
 
-    public IPLWicketCsv(int position, String player, int matches, int runns) {
+    public IPLWicketCsv(int position, String player, int runs, double average, int matches, double strikeRate, double economy, int fourWkt, int fiveWicket) {
+        this.position = position;
+        this.player = player;
+        this.matches = matches;
+        this.runs = runs;
+        this.average = average;
+        this.matches = matches;
+        this.strikeRate = strikeRate;
+        this.economy = economy;
+        this.fourWkt = fourWkt;
+        this.fiveWicket = fiveWicket;
     }
 
 
@@ -66,21 +76,5 @@ public class IPLWicketCsv {
                 ", fourWkt=" + fourWkt +
                 ", fiveWicket=" + fiveWicket +
                 '}';
-    }
-
-    public IPLWicketCsv(int position, String player, int matches, int inning, double over, int runs, int wickets, int bestBallingInning, double average, int economy, double strikeRate, int fourWkt, int fiveWicket) {
-        this.position = position;
-        this.player = player;
-        this.matches = matches;
-        this.inning = inning;
-        this.over = over;
-        this.runs = runs;
-        this.wickets = wickets;
-        this.bestBallingInning = bestBallingInning;
-        this.average = average;
-        this.economy = economy;
-        this.strikeRate = strikeRate;
-        this.fourWkt = fourWkt;
-        this.fiveWicket = fiveWicket;
     }
 }

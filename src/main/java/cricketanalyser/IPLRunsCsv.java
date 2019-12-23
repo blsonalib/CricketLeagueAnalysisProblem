@@ -78,24 +78,6 @@ public class IPLRunsCsv {
                 ", sixes=" + sixes +
                 '}';
     }
-
-    public IPLRunsCsv(int position, String player, int match, int innings, int notOut, int runs, String highScore, double average, int ballFaced, double strikeRate, int hundreds, int fiftys, int fours, int sixes) {
-        this.position = position;
-        this.player = player;
-        this.match = match;
-        this.innings = innings;
-        this.notOut = notOut;
-        this.runs = runs;
-        this.highScore = highScore;
-        this.average = average;
-        this.ballFaced = ballFaced;
-        this.strikeRate = strikeRate;
-        this.hundreds = hundreds;
-        this.fiftys = fiftys;
-        this.fours = fours;
-        this.sixes = sixes;
-
-    }
 }
 
 
