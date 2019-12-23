@@ -91,6 +91,7 @@ public class CricketAnalyserTest {
         IPLRunsCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLRunsCsv[].class);
         Assert.assertEquals("MS Dhoni", mostAverageRuns[mostAverageRuns.length-1].player);
     }
+
     @Test
     public void givenIPLFactSheetData_WhenSortedMaximumRunsAndBestAverages_ShouldReturnMaximumRunsWithGreatAverages() throws CricketAnalyserException {
         CricketAnalyser cricketAnalyser = new CricketAnalyser(CricketAnalyser.Cricket.RUNS);
