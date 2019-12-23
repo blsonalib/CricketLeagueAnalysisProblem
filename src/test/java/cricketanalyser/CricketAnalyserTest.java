@@ -11,7 +11,7 @@ public class CricketAnalyserTest {
     public static final String CRICKET_CSV_FILE_FOR_WRONG_DELIMETER = "/home/admin1/IdeaProjects/CricketLeagueAnalyserProblem/src/test/resources/IPL2019FactsheetMostRunsForDelimeter.csv";
     public static final String CRICKET_CSV_FILE_FOR_WITHOUT_HEADER = "/home/admin1/IdeaProjects/CricketLeagueAnalyserProblem/src/test/resources/IPL2019FactsheetMostRunsForWithoutHeader.csv";
     public static final String WRONG_IPL_CSV_FILE = "/home/admin1/IdeaProjects/CricketLeagueAnalyserProblem/src/test/resources/IPL2019FactsheetMostWktsForWrongFile.csv";
-    public static final String CRICKET_WICKETS_CSV_FILE = "/home/admin1/IdeaProjects/CricketLeagueAnalyserProblem/src/test/resources/IPL2019FactsheetMostWkts.csv";
+    public static final String CRICKET_WICKETS_CSV_FILE = "/home/admin1/IdeaProjects/CricketLeagueAnalyserProblem/src/test/resources/SampleWicket.csv";
 
     @Test
     public void givenIPLFactSheetData_ReturnsCorrectRecords() throws CricketAnalyserException {
@@ -96,9 +96,18 @@ public class CricketAnalyserTest {
     public void givenIPLFactSheetData_WhenSortedMaximumRunsAndBestAverages_ShouldReturnMaximumRunsWithGreatAverages() throws CricketAnalyserException {
         CricketAnalyser cricketAnalyser = new CricketAnalyser(CricketAnalyser.Cricket.RUNS);
         cricketAnalyser.loadIPLCensusData(CricketAnalyser.Cricket.RUNS,CRICKET_RUNS_CSV_FILE);
-        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.RUN);
+        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.MAXIMUM_RUNS_WITH_BEST_AVERAGES);
         IPLRunsCsv[] mostAverageRuns = new Gson().fromJson(iplPlayersRecords, IPLRunsCsv[].class);
         Assert.assertEquals("David Warner", mostAverageRuns[mostAverageRuns.length-1].player);
+    }
+
+    @Test
+    public void givenIPLFactSheetData_WhenSortedBallingAverages_ShouldReturnBestBallingAverages() throws CricketAnalyserException {
+        CricketAnalyser cricketAnalyser = new CricketAnalyser(CricketAnalyser.Cricket.WICKET);
+        cricketAnalyser.loadIPLCensusData(CricketAnalyser.Cricket.WICKET,CRICKET_WICKETS_CSV_FILE);
+        String iplPlayersRecords = cricketAnalyser.getSortIPLCricketRecord(SortedField.Field.AVERAGE);
+        IPLWicketCsv[] mostAverageWicket = new Gson().fromJson(iplPlayersRecords, IPLWicketCsv[].class);
+        Assert.assertEquals("Anukul Roy", mostAverageWicket[0].player);
     }
 }
 
