@@ -38,7 +38,7 @@ public class SortedField {
         sortFieldComparator.put(Field.AVERAGE_WITH_BEST_STRIKE_RATE,(iplAverageComparator).thenComparing(iplStrikeRateComparator));
         sortFieldComparator.put(Field.MAXIMUM_RUNS_WITH_BEST_AVERAGES,(iplRunComparator).thenComparing(iplAverageComparator));
 
-        Comparator<IPLRunsCsv> daoComparator = sortFieldComparator.get(field);
+        Comparator<IPLDAO> daoComparator = sortFieldComparator.get(field);
         return daoComparator;
 
     }

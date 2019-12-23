@@ -47,8 +47,17 @@ public class IPLRunsCsv {
     @CsvBindByName(column = "6s", required = true)
     public int sixes;
 
-    public IPLRunsCsv(int position, String player, int matches, int runns) {
+    public IPLRunsCsv(int position, String player, int match, int runs, double strikeRate, int sixes, double average, int fours) {
+      this.position=position;
+      this.player=player;
+      this.match=match;
+      this.runs=runs;
+      this.strikeRate=strikeRate;
+      this.sixes=sixes;
+      this.average=average;
+      this.fours=fours;
     }
+
 
     @Override
     public String toString() {
