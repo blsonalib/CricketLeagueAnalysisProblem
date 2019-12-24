@@ -25,7 +25,6 @@ public class CricketAnalyser {
 
     Map<String,IPLDAO>ipldaoMap = new HashMap<>();
     public int loadIPLCensusData(Cricket cricket, String...csvFilePath) throws CricketAnalyserException {
-       // ipldaoMap = CricketAdapterFactory.getCricketData(cricket).loadIPLCensusData(csvFilePath);
         ipldaoMap = cricketAdapter.loadIPLCensusData(cricket,csvFilePath);
         return ipldaoMap.size();
     }
