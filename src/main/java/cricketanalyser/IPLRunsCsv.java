@@ -1,15 +1,17 @@
 package cricketanalyser;
+
 import com.opencsv.bean.CsvBindByName;
 
 public class IPLRunsCsv {
 
     public IPLRunsCsv() {
     }
+
     @CsvBindByName(column = "POS")
     public int position;
 
     @CsvBindByName(column = "PLAYER", required = true)
-    public  String player;
+    public String player;
 
     @CsvBindByName(column = "Mat", required = true)
     public int matches;
@@ -27,7 +29,7 @@ public class IPLRunsCsv {
     public String highScore;
 
     @CsvBindByName(column = "Avg", required = true)
-    public double  average;
+    public double average;
 
     @CsvBindByName(column = "BF", required = true)
     public int ballFaced;
@@ -48,16 +50,15 @@ public class IPLRunsCsv {
     public int sixes;
 
     public IPLRunsCsv(int position, String player, int matches, int runs, double strikeRate, int sixes, double average, int fours) {
-      this.position=position;
-      this.player=player;
-      this.matches=matches;
-      this.runs=runs;
-      this.strikeRate=strikeRate;
-      this.sixes=sixes;
-      this.average=average;
-      this.fours=fours;
+        this.position = position;
+        this.player = player;
+        this.matches = matches;
+        this.runs = runs;
+        this.strikeRate = strikeRate;
+        this.sixes = sixes;
+        this.average = average;
+        this.fours = fours;
     }
-
 
     @Override
     public String toString() {

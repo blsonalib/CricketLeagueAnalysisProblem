@@ -10,7 +10,7 @@ public class IPLWicketCsv {
     public int position;
 
     @CsvBindByName(column = "PLAYER")
-    public  String player;
+    public String player;
 
     @CsvBindByName(column = "Mat")
     public int matches;
@@ -57,7 +57,6 @@ public class IPLWicketCsv {
         this.fourWkt = fourWkt;
         this.fiveWicket = fiveWicket;
     }
-
 
     @Override
     public String toString() {

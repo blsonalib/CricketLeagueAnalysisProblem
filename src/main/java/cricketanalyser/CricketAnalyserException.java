@@ -1,9 +1,8 @@
 package cricketanalyser;
 
-public class CricketAnalyserException extends Exception{
-    enum ExceptionType
-    {
-        DATA_NOT_FOUND,FILE_ISSUE,INCORRECT_FILE;
+public class CricketAnalyserException extends Exception {
+    enum ExceptionType {
+        DATA_NOT_FOUND, FILE_ISSUE, INCORRECT_FILE;
     }
     ExceptionType type;
 

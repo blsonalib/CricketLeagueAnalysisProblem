@@ -45,6 +45,5 @@ public abstract class CricketAdapter {
         }
         return null;
     }
-
 }
 

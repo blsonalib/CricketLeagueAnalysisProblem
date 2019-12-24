@@ -1,11 +1,11 @@
 package cricketanalyser;
+
 import com.google.gson.Gson;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class CricketAnalyser {
-
-
 
     private Cricket cricket;
     private CricketAdapter cricketAdapter;
@@ -14,18 +14,19 @@ public class CricketAnalyser {
         this.cricketAdapter = cricketAdapter;
     }
 
-    enum Cricket{RUNS,WICKET}
-    CricketAnalyser(Cricket cricket){
-        this.cricket = cricket;
+    enum Cricket {RUNS, WICKET}
 
+    CricketAnalyser(Cricket cricket) {
+        this.cricket = cricket;
     }
 
     public CricketAnalyser() {
     }
 
-    Map<String,IPLDAO>ipldaoMap = new HashMap<>();
-    public int loadIPLCensusData(Cricket cricket, String...csvFilePath) throws CricketAnalyserException {
-        ipldaoMap = cricketAdapter.loadIPLCensusData(cricket,csvFilePath);
+    Map<String, IPLDAO> ipldaoMap = new HashMap<>();
+
+    public int loadIPLCensusData(Cricket cricket, String... csvFilePath) throws CricketAnalyserException {
+        ipldaoMap = cricketAdapter.loadIPLCensusData(cricket, csvFilePath);
         return ipldaoMap.size();
     }
 
@@ -35,7 +36,7 @@ public class CricketAnalyser {
         }
 
         Comparator<IPLDAO> censusComparator = SortedField.getComparatorField(field[0]);
-        ArrayList censusDAOS=ipldaoMap.values().stream().sorted(censusComparator).
+        ArrayList censusDAOS = ipldaoMap.values().stream().sorted(censusComparator).
                 map(censusDAO -> censusDAO.getIPLDTO(cricket)).
                 collect(Collectors.toCollection(ArrayList::new));
         String sortedIPLDataJson = new Gson().toJson(censusDAOS);
