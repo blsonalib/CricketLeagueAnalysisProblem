@@ -14,7 +14,7 @@ import java.util.stream.StreamSupport;
 
 public class IPLWicketAdapter extends CricketAdapter {
     @Override
-    public Map<String, IPLDAO> loadIPLCensusData(String... csvPath) throws CricketAnalyserException {
+    public Map<String, IPLDAO> loadIPLCensusData(CricketAnalyser.Cricket runs, String... csvPath) throws CricketAnalyserException {
         Map<String,IPLDAO> ipldaoMap = super.loadIPLCensusData(IPLWicketCsv.class, csvPath[0]);
         this.loadRunData(ipldaoMap, csvPath);
         return ipldaoMap;

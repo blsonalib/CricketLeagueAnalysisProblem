@@ -39,6 +39,10 @@ public class IPLDAO {
         fiveWicket = iplWicketCsv.fiveWicket;
     }
 
+    public IPLDAO() {
+
+    }
+
     public Object getIPLDTO(CricketAnalyser.Cricket cricket) {
         if (cricket.equals(CricketAnalyser.Cricket.RUNS))
          return new IPLRunsCsv(position, player, matches,runs, strikeRate, sixes,batsManAverage,fours);

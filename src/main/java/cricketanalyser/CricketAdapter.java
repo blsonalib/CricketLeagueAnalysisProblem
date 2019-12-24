@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
 
 public abstract class CricketAdapter {
 
-    public abstract Map<String, IPLDAO> loadIPLCensusData(String... csvfilePath) throws CricketAnalyserException;
+    public abstract Map<String, IPLDAO> loadIPLCensusData(CricketAnalyser.Cricket runs, String... csvfilePath) throws CricketAnalyserException;
 
     protected <E> Map<String, IPLDAO> loadIPLCensusData(Class<E> IPLCsvClass, String... csvFilePath) throws CricketAnalyserException {
         try (Reader reader = Files.newBufferedReader(Paths.get(String.valueOf(csvFilePath[0])));) {
@@ -39,10 +39,12 @@ public abstract class CricketAdapter {
         } catch (RuntimeException e) {
             throw new CricketAnalyserException(e.getMessage(),
                     CricketAnalyserException.ExceptionType.FILE_ISSUE);
+
         } catch (CSVBuilderException e) {
             e.printStackTrace();
         }
         return null;
     }
+
 }
 
