@@ -17,6 +17,7 @@ import static org.mockito.Mockito.when;
 public class MockingTest {
 
     public static final String CRICKET_RUNS_CSV_FILE = "/home/admin1/IdeaProjects/CricketLeagueAnalyserProblem/src/test/resources/IPL2019FactsheetMostRuns.csv";
+    public static final String CRICKET_WICKETS_CSV_FILE = "/home/admin1/IdeaProjects/CricketLeagueAnalyserProblem/src/test/resources/IPL2019FactsheetMostWkts.csv";
 
     @Mock
     CricketAdapter cricketAdapter;
@@ -35,18 +36,32 @@ public class MockingTest {
     }
 
     @Test
-    public void givenIPLFactSheetData_ReturnsCorrectRecords() throws CricketAnalyserException {
+    public void givenIPLFactSheetData_ShouldReturnsBattesManCorrectRecords() throws CricketAnalyserException {
         try {
             CricketAdapter cricketAdapter = mock(IPLRunAdapter.class);
             when(cricketAdapter.loadIPLCensusData(CricketAnalyser.Cricket.RUNS, CRICKET_RUNS_CSV_FILE)).thenReturn(ipldaoMap);
             CricketAnalyser cricketAnalyser = new CricketAnalyser();
             cricketAnalyser.setCricketAdapter(cricketAdapter);
-            int i = cricketAnalyser.loadIPLCensusData(CricketAnalyser.Cricket.RUNS, CRICKET_RUNS_CSV_FILE);
-            Assert.assertEquals(3, i);
+            int size = cricketAnalyser.loadIPLCensusData(CricketAnalyser.Cricket.RUNS, CRICKET_RUNS_CSV_FILE);
+            Assert.assertEquals(3, size);
         } catch (CricketAnalyserException e) {
             e.printStackTrace();
         }
     }
-}
 
+    @Test
+    public void givenIPLFactSheetData_ShouldReturnBowllerCorrectRecords() throws CricketAnalyserException {
+        try {
+            CricketAdapter cricketAdapter = mock(IPLWicketAdapter.class);
+            when(cricketAdapter.loadIPLCensusData(CricketAnalyser.Cricket.WICKET, CRICKET_WICKETS_CSV_FILE)).thenReturn(ipldaoMap);
+            CricketAnalyser cricketAnalyser = new CricketAnalyser();
+            cricketAnalyser.setCricketAdapter(cricketAdapter);
+            int size = cricketAnalyser.loadIPLCensusData(CricketAnalyser.Cricket.WICKET,CRICKET_WICKETS_CSV_FILE);
+            Assert.assertEquals(3, size);
+        } catch (CricketAnalyserException e) {
+            e.printStackTrace();
+
+        }
+    }
+}
 
